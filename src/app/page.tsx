@@ -9,7 +9,7 @@ import { DemoSection } from '../components/DemoSection'
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white transition-all duration-500 ease-in-out">
       <div className="max-w-7xl mx-auto">
         <HeroSection />
         <HowItWorksSection />
