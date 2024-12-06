@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 export function Footer() {
   return (
-    <footer className="bg-gray-800 text-white py-8">
+    <footer className="bg-gray-900 text-white py-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row justify-between items-center">
           {/* Logo */}
@@ -15,7 +15,7 @@ export function Footer() {
             </Link>
           </div>
           {/* Navigation Links */}
-          <div className="flex space-x-6">
+          <div className="flex space-x-8">
             <Link href="/about-us">
               <span className="hover:text-gray-400 transition-colors duration-200">About Us</span>
             </Link>

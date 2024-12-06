@@ -22,7 +22,7 @@ export function HeroSection() {
           </p>
           <div className="mt-10 flex items-center gap-x-6">
             <Link href="/signup">
-              <Button className="text-base px-10 py-4 shadow-lg hover:shadow-2xl transform transition hover:-translate-y-1 hover:bg-blue-700">
+              <Button className="text-base px-12 py-5 shadow-lg hover:shadow-2xl transform transition hover:-translate-y-1 hover:bg-blue-800 hover:scale-105">
                 Get Started
               </Button>
             </Link>
