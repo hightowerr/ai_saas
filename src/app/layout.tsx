@@ -1,8 +1,10 @@
 import './globals.css'
+import 'bootstrap/dist/css/bootstrap.min.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { Navbar } from '../components/Navbar'
 import { Footer } from '../components/Footer'
+import BootstrapProvider from '../components/providers/BootstrapProvider'
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
 import SupabaseProvider from '../components/providers/SupabaseProvider'
@@ -29,11 +31,13 @@ export default async function RootLayout({
       <html lang="en" className="h-full">
         <body className={`${inter.className} h-full antialiased`}>
           <SupabaseProvider session={session}>
-            <div className="min-h-screen flex flex-col">
-              <Navbar session={session} />
-              <main className="flex-grow">{children}</main>
-              <Footer />
-            </div>
+            <BootstrapProvider>
+              <div className="min-h-screen d-flex flex-column">
+                <Navbar session={session} />
+                <main className="flex-grow-1">{children}</main>
+                <Footer />
+              </div>
+            </BootstrapProvider>
           </SupabaseProvider>
         </body>
       </html>
