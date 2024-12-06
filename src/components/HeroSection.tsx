@@ -22,12 +22,12 @@ export function HeroSection() {
           </p>
           <div className="mt-10 flex items-center gap-x-6">
             <Link href="/signup">
-              <Button className="text-base px-8 py-3 shadow-lg hover:shadow-xl transform transition hover:-translate-y-0.5">
+              <Button className="text-base px-10 py-4 shadow-lg hover:shadow-2xl transform transition hover:-translate-y-1 hover:bg-blue-700">
                 Get Started
               </Button>
             </Link>
             <Link href="#features">
-              <Button variant="outline" className="text-base px-8 py-3">
+              <Button variant="outline" className="text-base px-10 py-4 hover:bg-blue-50 hover:border-blue-700">
                 Learn More
               </Button>
             </Link>
