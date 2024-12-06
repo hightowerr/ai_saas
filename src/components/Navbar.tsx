@@ -26,7 +26,7 @@ export function Navbar({ session }: NavbarProps) {
             <Link href="/" className="flex-shrink-0">
               <span className="text-xl font-bold text-blue-600 hover:text-blue-700 transition-colors duration-200">AI SaaS</span>
             </Link>
-            <div className="hidden md:ml-10 md:flex md:space-x-8">
+            <div className="hidden md:ml-10 md:flex md:space-x-10">
               <Link
                 href="/"
                 className={`inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium ${
