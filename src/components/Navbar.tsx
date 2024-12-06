@@ -1,64 +1,80 @@
 'use client'
 
-import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Button } from './ui/Button'
+import { Session } from '@supabase/supabase-js'
 import { supabase } from '../utils/supabase'
-import { User, Session, AuthChangeEvent } from '@supabase/supabase-js'
 
-export function Navbar() {
-  const [user, setUser] = useState<User | null>(null)
+interface NavbarProps {
+  session: Session | null
+}
+
+export function Navbar({ session }: NavbarProps) {
   const pathname = usePathname()
-
-  useEffect(() => {
-    const { data: authListener } = supabase.auth.onAuthStateChange(
-      (event: AuthChangeEvent, session: Session | null) => {
-        setUser(session?.user ?? null)
-      }
-    )
-
-    // Check current session
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setUser(session?.user ?? null)
-    })
-
-    return () => {
-      authListener?.subscription.unsubscribe()
-    }
-  }, [])
+  const user = session?.user
 
   const handleSignOut = async () => {
     await supabase.auth.signOut()
   }
 
   return (
-    <nav className="border-b border-gray-200">
+    <nav className="bg-white border-b border-gray-200 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16">
-          <div className="flex">
-            <Link href="/" className="flex items-center">
-              <span className="text-xl font-bold text-blue-600">AI SaaS</span>
+        <div className="flex justify-between h-16 items-center">
+          <div className="flex items-center">
+            <Link href="/" className="flex-shrink-0">
+              <span className="text-xl font-bold text-blue-600 hover:text-blue-700 transition-colors duration-200">AI SaaS</span>
             </Link>
-            <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
-              <Link 
+            <div className="hidden md:ml-10 md:flex md:space-x-8">
+              <Link
                 href="/"
-                className={`inline-flex items-center px-1 pt-1 ${
-                  pathname === '/' 
-                    ? 'border-b-2 border-blue-500 text-gray-900' 
-                    : 'text-gray-500 hover:text-gray-700'
-                }`}
+                className={`inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium ${
+                  pathname === '/'
+                    ? 'border-blue-500 text-gray-900'
+                    : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                } transition-colors duration-200`}
               >
                 Home
               </Link>
+              <Link
+                href="/#how-it-works"
+                className="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 transition-colors duration-200"
+              >
+                How It Works
+              </Link>
+              <Link
+                href="/#features"
+                className="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 transition-colors duration-200"
+              >
+                Features
+              </Link>
+              <Link
+                href="/#pricing"
+                className="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 transition-colors duration-200"
+              >
+                Pricing
+              </Link>
+              <Link
+                href="/#faqs"
+                className="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 transition-colors duration-200"
+              >
+                FAQs
+              </Link>
+              <Link
+                href="/#demo"
+                className="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 transition-colors duration-200"
+              >
+                Demo
+              </Link>
               {user && (
-                <Link 
+                <Link
                   href="/dashboard"
-                  className={`inline-flex items-center px-1 pt-1 ${
-                    pathname === '/dashboard' 
-                      ? 'border-b-2 border-blue-500 text-gray-900' 
-                      : 'text-gray-500 hover:text-gray-700'
-                  }`}
+                  className={`inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium ${
+                    pathname === '/dashboard'
+                      ? 'border-blue-500 text-gray-900'
+                      : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                  } transition-colors duration-200`}
                 >
                   Dashboard
                 </Link>
@@ -67,16 +83,29 @@ export function Navbar() {
           </div>
           <div className="flex items-center">
             {user ? (
-              <Button onClick={handleSignOut} variant="outline">
+              <Button 
+                onClick={handleSignOut} 
+                variant="outline"
+                className="ml-4 px-4 py-2 text-sm font-medium"
+              >
                 Sign Out
               </Button>
             ) : (
-              <div className="flex space-x-4">
+              <div className="flex items-center space-x-4">
                 <Link href="/login">
-                  <Button variant="outline">Log In</Button>
+                  <Button 
+                    variant="outline"
+                    className="px-4 py-2 text-sm font-medium"
+                  >
+                    Log In
+                  </Button>
                 </Link>
                 <Link href="/signup">
-                  <Button>Sign Up</Button>
+                  <Button
+                    className="px-4 py-2 text-sm font-medium"
+                  >
+                    Sign Up
+                  </Button>
                 </Link>
               </div>
             )}
