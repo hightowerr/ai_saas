@@ -57,7 +57,12 @@ export function FeaturesSection() {
         <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
           <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
             {features.map((feature) => (
-              <div key={feature.title} className="flex flex-col items-start bg-white p-10 rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300">
+              <div 
+                key={feature.title} 
+                className="flex flex-col items-start bg-white p-10 rounded-2xl shadow-md 
+                         hover:shadow-xl hover:scale-105 hover:bg-blue-50/30
+                         transform transition-all duration-300 ease-in-out"
+              >
                 <div className="flex items-center justify-center w-20 h-20 bg-blue-100 rounded-xl mb-6">
                   <span className="text-3xl">{feature.icon}</span>
                 </div>

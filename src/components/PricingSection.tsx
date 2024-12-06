@@ -62,9 +62,11 @@ export function PricingSection() {
           {tiers.map((tier) => (
             <div
               key={tier.name}
-              className={`relative flex flex-col justify-between rounded-3xl bg-white p-8 ring-1 ring-gray-200 xl:p-10 hover:shadow-lg transition-shadow duration-300 ${
-                tier.name === 'Professional' ? 'ring-2 ring-blue-600' : ''
-              }`}
+              className={`relative flex flex-col justify-between rounded-3xl bg-white p-8 ring-1 
+                         ${tier.name === 'Professional' 
+                           ? 'ring-2 ring-blue-600 bg-blue-50/30 shadow-lg scale-105' 
+                           : 'ring-gray-200 hover:ring-blue-200'} 
+                         xl:p-10 hover:shadow-xl transition-all duration-300 ease-in-out`}
             >
               {tier.name === 'Professional' && (
                 <div className="absolute -top-5 left-1/2 transform -translate-x-1/2">

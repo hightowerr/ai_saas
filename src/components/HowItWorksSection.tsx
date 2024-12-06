@@ -36,7 +36,9 @@ export function HowItWorksSection() {
           </p>
         </div>
         <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
-          <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
+          <dl className="relative grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
+            {/* Connecting lines for desktop */}
+            <div className="hidden lg:block absolute top-1/2 left-1/4 right-1/4 h-0.5 bg-blue-200 transform -translate-y-1/2"></div>
             {steps.map((step) => (
               <div key={step.title} className="flex flex-col items-center">
                 <div className="flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-4">
