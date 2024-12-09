@@ -5,6 +5,13 @@ import { usePathname } from 'next/navigation'
 import { Button } from './ui/Button'
 import { Session } from '@supabase/supabase-js'
 import { supabase } from '../utils/supabase'
+import { 
+  Dialog, 
+  DialogContent, 
+  DialogTrigger 
+} from '@radix-ui/react-dialog'
+import { HamburgerMenuIcon, Cross1Icon } from '@radix-ui/react-icons'
+import { useState } from 'react'
 
 interface NavbarProps {
   session: Session | null
@@ -98,13 +105,13 @@ export function Navbar({ session }: NavbarProps) {
               <Button 
                 onClick={handleSignOut} 
                 variant="outline"
-                className="ml-4 px-4 py-2 text-sm font-medium"
+                className="ml-4 px-4 py-2 text-sm font-medium hidden md:inline-flex"
               >
                 Sign Out
               </Button>
             ) : (
               <div className="flex items-center space-x-4">
-                <Link href="/login">
+                <Link href="/login" className="hidden md:inline-flex">
                   <Button 
                     variant="outline"
                     className="px-4 py-2 text-sm font-medium"
@@ -112,7 +119,7 @@ export function Navbar({ session }: NavbarProps) {
                     Log In
                   </Button>
                 </Link>
-                <Link href="/signup">
+                <Link href="/signup" className="hidden md:inline-flex">
                   <Button
                     className="px-4 py-2 text-sm font-medium"
                   >
@@ -121,6 +128,116 @@ export function Navbar({ session }: NavbarProps) {
                 </Link>
               </div>
             )}
+            
+            {/* Mobile Menu */}
+            <Dialog>
+              <DialogTrigger asChild>
+                <button 
+                  aria-label="Open Mobile Menu" 
+                  className="md:hidden text-gray-600 hover:text-gray-900"
+                >
+                  <HamburgerMenuIcon className="h-6 w-6" />
+                </button>
+              </DialogTrigger>
+              <DialogContent 
+                className="fixed inset-0 z-50 bg-white p-6 md:hidden"
+                aria-describedby="mobile-menu-description"
+              >
+                <div className="flex justify-between items-center mb-6">
+                  <Link href="/" className="flex-shrink-0">
+                    <span className="text-xl font-bold text-primary-DEFAULT font-brand hover:text-primary-dark transition-colors duration-200">
+                      <span className="text-sm mr-1">🤖</span>AI Saas
+                    </span>
+                  </Link>
+                  <Dialog.Close asChild>
+                    <button 
+                      aria-label="Close Mobile Menu" 
+                      className="text-gray-600 hover:text-gray-900"
+                    >
+                      <Cross1Icon className="h-6 w-6" />
+                    </button>
+                  </Dialog.Close>
+                </div>
+                
+                <div className="flex flex-col space-y-4">
+                  <Link 
+                    href="/" 
+                    className="text-lg font-medium text-gray-900 hover:text-primary-DEFAULT"
+                  >
+                    Home
+                  </Link>
+                  {pathname === '/' && (
+                    <>
+                      <Link 
+                        href="/#how-it-works" 
+                        className="text-lg font-medium text-gray-900 hover:text-primary-DEFAULT"
+                      >
+                        How It Works
+                      </Link>
+                      <Link 
+                        href="/#features" 
+                        className="text-lg font-medium text-gray-900 hover:text-primary-DEFAULT"
+                      >
+                        Features
+                      </Link>
+                      <Link 
+                        href="/#pricing" 
+                        className="text-lg font-medium text-gray-900 hover:text-primary-DEFAULT"
+                      >
+                        Pricing
+                      </Link>
+                      <Link 
+                        href="/#faqs" 
+                        className="text-lg font-medium text-gray-900 hover:text-primary-DEFAULT"
+                      >
+                        FAQs
+                      </Link>
+                      <Link 
+                        href="/#demo" 
+                        className="text-lg font-medium text-gray-900 hover:text-primary-DEFAULT"
+                      >
+                        Demo
+                      </Link>
+                    </>
+                  )}
+                  {user && (
+                    <Link 
+                      href="/dashboard" 
+                      className="text-lg font-medium text-gray-900 hover:text-primary-DEFAULT"
+                    >
+                      Dashboard
+                    </Link>
+                  )}
+                  
+                  <div className="border-t pt-4 mt-4 space-y-4">
+                    {user ? (
+                      <Button 
+                        onClick={handleSignOut} 
+                        className="w-full"
+                      >
+                        Sign Out
+                      </Button>
+                    ) : (
+                      <>
+                        <Link href="/login" className="block">
+                          <Button 
+                            variant="outline" 
+                            className="w-full"
+                          >
+                            Log In
+                          </Button>
+                        </Link>
+                        <Link href="/signup" className="block">
+                          <Button className="w-full">
+                            Sign Up
+                          </Button>
+                        </Link>
+                      </>
+                    )}
+                  </div>
+                </div>
+              </DialogContent>
+            </Dialog>
           </div>
         </div>
       </div>
