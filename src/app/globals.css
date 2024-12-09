@@ -5,3 +5,12 @@ html {
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@keyframes subtle-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-subtle-float {
+  animation: subtle-float 4s ease-in-out infinite;
+}

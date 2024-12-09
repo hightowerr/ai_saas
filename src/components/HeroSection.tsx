@@ -12,7 +12,7 @@ export function HeroSection() {
       </div>
 
       <div className="mx-auto max-w-7xl px-6 pb-24 pt-32 sm:pb-32 lg:flex lg:px-8 lg:py-40">
-        <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-xl lg:flex-shrink-0 lg:pt-8">
+        <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-xl lg:flex-shrink-0 lg:pt-8 lg:w-[60%]">
           <h1 className="mt-10 text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
             Transform Your Workflow with AI-Powered Solutions
           </h1>
@@ -34,18 +34,21 @@ export function HeroSection() {
           </div>
         </div>
 
-        {/* Decorative image */}
-        <div className="mx-auto mt-16 flex max-w-2xl sm:mt-24 lg:ml-10 lg:mr-0 lg:mt-0 lg:max-w-none lg:flex-none xl:ml-32">
-          <div className="max-w-3xl flex-none sm:max-w-5xl lg:max-w-none">
-            <div className="relative w-[40rem] h-[35rem] sm:w-[57rem]">
-              {/* Abstract shapes */}
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                <div className="relative">
-                  <div className="absolute top-0 left-0 w-72 h-72 bg-blue-100 rounded-full mix-blend-multiply filter blur-xl opacity-50"></div>
-                  <div className="absolute top-0 -right-4 w-72 h-72 bg-purple-100 rounded-full mix-blend-multiply filter blur-xl opacity-50"></div>
-                  <div className="absolute -bottom-8 left-20 w-72 h-72 bg-pink-100 rounded-full mix-blend-multiply filter blur-xl opacity-50"></div>
-                </div>
-              </div>
+        {/* AI Illustration */}
+        <div className="hidden lg:block lg:w-[40%] relative">
+          <div 
+            className="w-full h-full bg-blue-50 rounded-lg overflow-hidden shadow-lg transform transition-transform duration-1000 hover:scale-105"
+            style={{
+              backgroundImage: 'linear-gradient(135deg, rgba(65,105,225,0.1) 0%, rgba(65,105,225,0.2) 100%)',
+            }}
+          >
+            <div className="absolute inset-0 flex items-center justify-center">
+              <img 
+                src="/robot.svg" 
+                alt="AI Workflow Illustration" 
+                className="w-3/4 h-3/4 object-contain animate-subtle-float"
+                style={{ maxWidth: '80%', maxHeight: '80%' }}
+              />
             </div>
           </div>
         </div>
