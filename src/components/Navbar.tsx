@@ -28,16 +28,20 @@ export function Navbar({ session }: NavbarProps) {
         <div className="flex justify-between h-16 items-center">
           <div className="flex items-center">
             <Link href="/" className="flex-shrink-0">
-              <span className="text-xl font-bold text-blue-600 hover:text-blue-700 transition-colors duration-200">AI SaaS</span>
+              <span className="text-xl font-bold text-primary-DEFAULT font-brand hover:text-primary-dark transition-colors duration-200">
+                <span className="text-sm mr-1">🤖</span>AI Saas
+              </span>
             </Link>
-            <div className="hidden md:ml-10 md:flex md:space-x-8">
+            <div className="hidden md:ml-10 md:flex md:space-x-[32px]">
               <Link
                 href="/"
-                className={`inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium ${
-                  pathname === '/'
-                    ? 'border-blue-500 text-gray-900'
+                aria-current={pathname === '/' ? 'page' : undefined}
+                className={`inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium 
+                  ${pathname === '/' 
+                    ? 'border-primary-DEFAULT text-gray-900' 
                     : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
-                } transition-colors duration-200`}
+                  } 
+                  transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-DEFAULT`}
               >
                 Home
               </Link>

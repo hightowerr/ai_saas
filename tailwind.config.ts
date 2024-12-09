@@ -10,9 +10,15 @@ const config: Config = {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#3B82F6',
+          DEFAULT: '#4169E1', // Updated brand color
           dark: '#2563EB',
         },
+      },
+      fontFamily: {
+        'brand': ['Inter', 'system-ui', 'sans-serif'], // More professional font
+      },
+      spacing: {
+        'nav-item': '32px', // Standardized spacing
       },
     },
   },
