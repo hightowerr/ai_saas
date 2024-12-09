@@ -34,9 +34,14 @@ export function Navbar({ session }: NavbarProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
           <div className="flex items-center">
-            <Link href="/" className="flex-shrink-0">
+            <Link href="/" className="flex-shrink-0 flex items-center">
+              <img 
+                src="/robot.svg" 
+                alt="AI SaaS Logo" 
+                className="h-8 w-8 mr-2" 
+              />
               <span className="text-xl font-bold text-primary-DEFAULT font-brand hover:text-primary-dark transition-colors duration-200">
-                <span className="text-sm mr-1">🤖</span>AI Saas
+                AI Saas
               </span>
             </Link>
             <div className="hidden md:ml-10 md:flex md:space-x-[32px]">
@@ -144,9 +149,14 @@ export function Navbar({ session }: NavbarProps) {
                 aria-describedby="mobile-menu-description"
               >
                 <div className="flex justify-between items-center mb-6">
-                  <Link href="/" className="flex-shrink-0">
+                  <Link href="/" className="flex-shrink-0 flex items-center">
+                    <img 
+                      src="/robot.svg" 
+                      alt="AI SaaS Logo" 
+                      className="h-8 w-8 mr-2" 
+                    />
                     <span className="text-xl font-bold text-primary-DEFAULT font-brand hover:text-primary-dark transition-colors duration-200">
-                      <span className="text-sm mr-1">🤖</span>AI Saas
+                      AI Saas
                     </span>
                   </Link>
                   <Dialog.Close asChild>
