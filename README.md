@@ -1,36 +1,91 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AI SaaS Platform
 
-## Getting Started
+A SaaS platform with AI-powered assistance and user dashboard functionality.
 
-First, run the development server:
+## Features
 
+- AI Assistant for product queries using OpenAI
+- User Dashboard with profile management
+- Plan management and subscription details
+- Supabase integration for authentication and data storage
+
+## Setup Instructions
+
+1. Install dependencies:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Configure environment variables:
+Create a `.env.local` file in the root directory with the following variables:
+```
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+OPENAI_API_KEY=your_openai_api_key
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Set up Supabase:
+   - Create a new project in Supabase
+   - Create a `profiles` table with the following schema:
+     ```sql
+     create table profiles (
+       id uuid references auth.users on delete cascade,
+       username text,
+       plan_type text default 'Free',
+       plan_status text default 'Active',
+       plan_renewal_date timestamp with time zone,
+       updated_at timestamp with time zone,
+       primary key (id)
+     );
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+     -- Enable Row Level Security
+     alter table profiles enable row level security;
 
-## Learn More
+     -- Create policies
+     create policy "Public profiles are viewable by everyone."
+       on profiles for select
+       using ( true );
 
-To learn more about Next.js, take a look at the following resources:
+     create policy "Users can insert their own profile."
+       on profiles for insert
+       with check ( auth.uid() = id );
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+     create policy "Users can update their own profile."
+       on profiles for update
+       using ( auth.uid() = id );
+     ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+4. Run the development server:
+```bash
+npm run dev
+```
 
-## Deploy on Vercel
+## User Stories Implemented
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. AI Assistant for Product Queries
+   - Real-time AI assistance using OpenAI
+   - Context-aware responses for product-related questions
+   - Persistent chat interface with message history
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+2. User Dashboard with Profile Settings
+   - Account information management
+   - Plan details display
+   - Subscription status and renewal dates
+   - Plan features overview
+   - Upgrade options for free-tier users
+
+## Development
+
+The application is built with:
+- Next.js 13+ (App Router)
+- TypeScript
+- Tailwind CSS
+- Supabase for authentication and database
+- OpenAI for AI assistance
+
+## Environment Variables
+
+Required environment variables:
+- `NEXT_PUBLIC_SUPABASE_URL`: Your Supabase project URL
+- `NEXT_PUBLIC_SUPABASE_ANON_KEY`: Your Supabase project's anon/public key
+- `OPENAI_API_KEY`: Your OpenAI API key for AI assistant functionality
