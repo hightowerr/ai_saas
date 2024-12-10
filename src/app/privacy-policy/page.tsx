@@ -3,7 +3,7 @@
 import React, { useState } from 'react'
 
 export default function PrivacyPolicyPage() {
-  const [activeSection, setActiveSection] = useState<string | null>(null)
+  const [activeSection, setActiveSection] = useState<string>('data-collection')
   const currentYear = new Date().getFullYear()
   const policyVersion = '2.0.1'
 
@@ -32,7 +32,21 @@ export default function PrivacyPolicyPage() {
         }
       ]
     },
-    // ... (rest of the code remains the same)
+    {
+      id: 'data-usage',
+      title: 'Data Usage and Processing',
+      content: [
+        {
+          subtitle: 'Processing Activities',
+          details: [
+            'User authentication and account management',
+            'Service personalization',
+            'Performance and usage analytics',
+            'Customer support and communication'
+          ]
+        }
+      ]
+    }
   ]
 
   return (
@@ -41,11 +55,63 @@ export default function PrivacyPolicyPage() {
       
       <div className="bg-blue-50 p-4 rounded-lg mb-8 text-center">
         <p className="text-sm text-gray-600">
-          Last Updated: {new Date().toLocaleDateString()} | Version {policyVersion}
+          Last Updated: {new Date().toLocaleDateString('en-US', { 
+            month: '2-digit', 
+            day: '2-digit', 
+            year: 'numeric' 
+          })} | Version {policyVersion}
         </p>
       </div>
 
-      {/* ... (rest of the JSX remains the same) */}
+      <div className="grid md:grid-cols-3 gap-4 mb-12">
+        {privacySections.map((section) => (
+          <button
+            key={section.id}
+            onClick={() => setActiveSection(section.id)}
+            className={`
+              px-4 py-2 rounded-md transition-all duration-300
+              ${activeSection === section.id 
+                ? 'bg-blue-600 text-white' 
+                : 'bg-blue-100 text-blue-800 hover:bg-blue-200'}
+            `}
+          >
+            {section.title}
+          </button>
+        ))}
+      </div>
+
+      {activeSection && (
+        <div className="bg-white shadow-lg rounded-lg p-6 animate-fade-in">
+          {privacySections
+            .find(section => section.id === activeSection)?.content.map((block, index) => (
+              <div key={index} className="mb-6">
+                <h3 className="text-xl font-semibold text-blue-600 mb-4">
+                  {block.subtitle}
+                </h3>
+                <ul className="list-disc list-inside text-gray-700 space-y-2">
+                  {block.details.map((detail, detailIndex) => (
+                    <li key={detailIndex}>{detail}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+        </div>
+      )}
+
+      <div className="mt-12 bg-gray-100 p-6 rounded-lg">
+        <h2 className="text-2xl font-bold mb-4">Contact Our Privacy Team</h2>
+        <p className="mb-4">
+          For any privacy-related inquiries, please contact us at:
+        </p>
+        <div className="space-y-2">
+          <p>📧 privacy@aitech.com</p>
+          <p>📞 +1 (415) 555-PRIVACY</p>
+        </div>
+      </div>
+
+      <div className="mt-8 text-center text-sm text-gray-500">
+        © {currentYear} AI SaaS. All privacy rights reserved.
+      </div>
     </div>
   )
 }
