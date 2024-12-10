@@ -21,13 +21,19 @@ export function HeroSection() {
             and unlock new possibilities for your business.
           </p>
           <div className="mt-10 flex items-center gap-x-6">
-            <Link href="/signup">
-              <Button className="text-base px-12 py-5 shadow-lg hover:shadow-2xl transform transition hover:-translate-y-1 hover:bg-blue-800 hover:scale-105">
+            <Link href="/signup" className="block">
+              <Button 
+                variant="primary" 
+                className="text-base px-12 py-5 min-h-[48px] shadow-lg hover:shadow-2xl transform transition hover:bg-blue-800"
+              >
                 Get Started
               </Button>
             </Link>
-            <Link href="#features">
-              <Button variant="outline" className="text-base px-10 py-4 hover:bg-blue-50 hover:border-blue-700">
+            <Link href="#features" className="block">
+              <Button 
+                variant="outline" 
+                className="text-base px-10 py-5 min-h-[48px] hover:bg-blue-50 hover:border-blue-700"
+              >
                 Learn More
               </Button>
             </Link>
