@@ -33,10 +33,10 @@ export const Navbar: React.FC<NavbarProps> = ({ session }) => {
           <span className="fw-bold" style={{ fontFamily: 'sans-serif' }}>SaasX</span>
         </Link>
         <div className="navbar-nav mx-auto d-flex gap-4">
-          <Link href="/" className="nav-item nav-link text-uppercase text-primary">HOME</Link>
-          <Link href="/features" className="nav-item nav-link text-uppercase">FEATURES</Link>
-          <Link href="/pricing" className="nav-item nav-link text-uppercase">PRICING</Link>
-          <Link href="/about" className="nav-item nav-link text-uppercase">ABOUT</Link>
+          <Link href="/" className="nav-item nav-link text-uppercase text-[#4457F2] hover:text-[#3346C1] transition-colors">HOME</Link>
+          <Link href="/features" className="nav-item nav-link text-uppercase hover:text-[#4457F2] transition-colors">FEATURES</Link>
+          <Link href="/pricing" className="nav-item nav-link text-uppercase hover:text-[#4457F2] transition-colors">PRICING</Link>
+          <Link href="/about" className="nav-item nav-link text-uppercase hover:text-[#4457F2] transition-colors">ABOUT</Link>
         </div>
         {session ? (
           <div className="d-flex align-items-center gap-3">
@@ -58,18 +58,11 @@ export const Navbar: React.FC<NavbarProps> = ({ session }) => {
         ) : (
           <div className="d-flex align-items-center gap-3">
             <Link 
-              href="/login" 
-              className="btn btn-outline-primary rounded-2 px-4 py-2"
-              data-testid="login-button"
-            >
-              LOG IN
-            </Link>
-            <Link 
               href="/signup" 
-              className="btn btn-primary rounded-2 px-4 py-2"
+              className="btn btn-primary bg-[#4457F2] rounded-[6px] px-4 py-2 hover:bg-[#3346C1] transition-colors"
               data-testid="signup-button"
             >
-              SIGN UP
+              GET QUOTE
             </Link>
           </div>
         )}
