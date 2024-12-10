@@ -36,8 +36,8 @@ export const Navbar: React.FC<NavbarProps> = ({ session }) => {
         </Link>
         <div className="navbar-nav mx-auto d-flex gap-4">
           <Link href="/" className="nav-item nav-link text-uppercase text-[#4457F2] hover:text-[#3346C1] transition-colors">HOME</Link>
-          <Link href="/features" className="nav-item nav-link text-uppercase hover:text-[#4457F2] transition-colors">FEATURES</Link>
-          <Link href="/pricing" className="nav-item nav-link text-uppercase hover:text-[#4457F2] transition-colors">PRICING</Link>
+          <Link href="/#features" className="nav-item nav-link text-uppercase hover:text-[#4457F2] transition-colors">FEATURES</Link>
+          <Link href="/#pricing" className="nav-item nav-link text-uppercase hover:text-[#4457F2] transition-colors">PRICING</Link>
           <Link href="/about" className="nav-item nav-link text-uppercase hover:text-[#4457F2] transition-colors">ABOUT</Link>
         </div>
         {session ? (
