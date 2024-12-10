@@ -23,9 +23,9 @@ export function Button({
   `
   
   const variants = {
-    primary: 'bg-[#4457F2] text-white hover:bg-blue-800 focus:ring-blue-600',
-    secondary: 'bg-gray-200 text-gray-900 hover:bg-gray-300 focus:ring-gray-500',
-    outline: 'border-2 border-[#4457F2] text-[#4457F2] hover:bg-blue-50 focus:ring-blue-600'
+    primary: 'bg-[#4169E1] text-white hover:bg-[#3A5DCE] focus:ring-blue-600',
+    secondary: 'border-2 border-[#4169E1] text-[#4169E1] hover:bg-blue-50 focus:ring-blue-600',
+    outline: 'bg-gray-200 text-gray-900 hover:bg-gray-300 focus:ring-gray-500'
   }
 
   const sizeStyles = 'px-4 py-2 text-sm min-h-[48px]'
