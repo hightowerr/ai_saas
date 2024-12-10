@@ -60,11 +60,18 @@ export const Navbar: React.FC<NavbarProps> = ({ session }) => {
         ) : (
           <div className="d-flex align-items-center gap-3">
             <Link 
+              href="/login" 
+              className="btn btn-secondary border-2 border-[#4169E1] text-[#4169E1] rounded-[6px] px-4 py-2 hover:bg-blue-50 transition-colors"
+              data-testid="login-button"
+            >
+              LOG IN
+            </Link>
+            <Link 
               href="/signup" 
               className="btn btn-primary bg-[#4169E1] rounded-[6px] px-4 py-2 hover:bg-[#3A5DCE] transition-colors"
               data-testid="signup-button"
             >
-              GET QUOTE
+              SIGN UP
             </Link>
           </div>
         )}
